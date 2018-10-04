@@ -1,3 +1,4 @@
+#!/usr/bin/python3.5
 import notify2
 import requests
 import traceback
