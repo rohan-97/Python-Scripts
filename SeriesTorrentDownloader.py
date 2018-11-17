@@ -4,7 +4,8 @@ from bs4 import BeautifulSoup
 from prettytable import PrettyTable
 
 isHighQuality=True
-directory = 'C:\\Users\\rohan.yadav\\Downloads\\Movies'
+# change the directory where you would like to download torrents
+directory = '/home/rohan/Downloads/Movies'
 
 def download_series(url,directory):
     if(url[0:24]!='https://ytstv.com/series'):
@@ -15,7 +16,7 @@ def download_series(url,directory):
     seasons = soup.select('.tvseason')
     index = 1
     series_name = soup.select('#mv-info > div.mvi-content > div.mvic-desc > h3')[0].text
-    series_root_directory = directory+'\\'+series_name
+    series_root_directory = os.path.join(directory,series_name)
     safeMkdir(series_root_directory)
     qual = input("enter y for high quality torrents else enter n\n")
     if qual =="n":
@@ -35,7 +36,7 @@ def download_series(url,directory):
         print('Bro select a valid option')
 
 def downloadSeason(season_data,root_directory):
-    season_directory = root_directory +'\\'+ season_data[0]
+    season_directory = os.path.join(root_directory,season_data[0])
     safeMkdir(season_directory)
     episodes = season_data[1]
     for episode in episodes:
@@ -97,7 +98,7 @@ def get_list(soup):
             demo.append(least.select('.ml-mask')[0]['href'])
             arr.append(demo)
         except Exception as e:
-            i
+            pass
     return arr
 
 def trim(unstripped_string):
