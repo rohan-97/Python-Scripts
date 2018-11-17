@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 from prettytable import PrettyTable
 
 isHighQuality=True
+# change the directory where you would like to download torrents
 directory = 'C:\\Users\\rohan.yadav\\Downloads\\Movies'
 
 def download_series(url,directory):
