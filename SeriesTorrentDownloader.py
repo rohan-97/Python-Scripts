@@ -52,12 +52,11 @@ def downloadEpisode(episode_name,episode_url,directory):
         torrent_url = links[-1]['href']
         print('downloading '+ episode_name)
         resp = requests.get(torrent_url)
-        with open(directory+'\\'+episode_name+'.torrent','wb') as f:
+        with open(os.path.join(directory,episode_name+'.torrent'),'wb') as f:
             f.write(resp.content)
             f.close()
     except Exception as e:
         print('failed to download '+ episode_name +' you can download the torrent at '+ episode_url)
-
 
 def search_series():
     pass
